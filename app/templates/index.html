@@ -5,24 +5,17 @@
 
 {% block body %}
 
-<div id="banner">
-    <img src="{{url_for('static', filename='banner.jpg')}}" alt="Cover Photo"/>
-    <div class="container">
-        <div class="row fill-container align-items-bottom">
-            <div class="col-12 date">
-                <h1 class="date">FRIDAY 9.14.18</h1>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <div id="today">
     <div class="container">
         <div class="row fill-container align-items-bottom">
-            <div class="col-12 heading">
-                <h1>PRAXIS OF THE DAY</h1>
+            <div class="image">
+              <img src="{{url_for('static', filename='banner.jpg')}}">
+              <div class="date">
+                FRIDAY 09.14.18
+              </div>
             </div>
+
             <div class = "col-12 col-md-6 challenge-block">
               <h3>Bible Reading</h3>
               <p> 
@@ -56,6 +49,48 @@
     </div>
 </div>
 
+<div id="today">
+    <div class="container">
+        <div class="row fill-container align-items-bottom">
+            <div class="image">
+              <img src="{{url_for('static', filename='banner.jpg')}}">
+              <div class="date">
+                FRIDAY 09.14.18
+              </div>
+            </div>
+
+            <div class = "col-12 col-md-6 challenge-block">
+              <h3>Bible Reading</h3>
+              <p> 
+                  <a href="https://www.biblegateway.com/passage/?search=genesis+1%3A1-42&version=NIV">Genesis 1:1-42</a><br>
+                  <a href="https://www.biblegateway.com/passage/?search=mark+1%3A1-31&version=NIV">Mark 1:1-31</a><br>
+                  <a href="https://www.biblegateway.com/passage/?search=psalms+1-2&version=NIV">Psalms 1-2</a><br>
+              </p>
+            </div>
+            <div class = "col-12 col-md-6 challenge-block">
+              <h3>Memorization</h3>
+              <p>
+                <a href="https://www.biblegateway.com/passage/?search=romans8:1-2&version=NIV">Romans 8:1-2</a><br>
+                
+              </p>
+            </div>
+            <div class = "col-12 col-md-6 challenge-block">
+              <h3>Meditation</h3>
+              <p>
+                  Father heart of God<br><br>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br>
+              </p>
+            </div>
+            <div class = "col-12 col-md-6 challenge-block">
+              <h3>Faith In Action Challenge</h3>
+              <p>
+                Share the a verse with a Coworker or Neighbor<br><br>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="subscribe">
   <div class="container">
@@ -71,7 +106,7 @@
         Email:<br>
         <input type="text" name="email">
         <br>
-        <input type="submit" id="subscribe-button" value="Subscribe">
+        <input type="submit" id="subscribe-button" value="Get PraxTrain by Email">
         
       </form> 
       
