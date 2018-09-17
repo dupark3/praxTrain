@@ -3,7 +3,8 @@
 # $ export FLASK_ENV=development        code changes refreshed
 
 from flask import Flask, redirect, url_for, request, render_template
-app = Flask(__name__)
+
+from app import app
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -15,6 +16,14 @@ def index():
 @app.route('/subscribed', methods=['GET'])
 def subscribed():
     return render_template('subscribed.html')
+
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    if request.method == 'POST':
+        return render_template('admin.html')
+        # change to authentication
+    else:
+        return render_template('admin.html')
 
 if __name__ == '__main__':
     app.run()

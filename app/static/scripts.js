@@ -12,12 +12,12 @@ function scrollFunction() {
     document.getElementById("navbar-right").style.padding = "30px 10px";
     document.getElementById("logo-image").style.height = "75px";
   }
-  if (document.body.scrollTop > 280 || document.documentElement.scrollTop > 280) {
+  if (document.body.scrollTop > 480 || document.documentElement.scrollTop > 480) {
     document.getElementById("today").style.opacity = "1.0";
   } else {
     document.getElementById("today").style.opacity = "0";
   }
-  if (document.body.scrollTop > 550 || document.documentElement.scrollTop > 550) {
+  if (document.body.scrollTop > 650 || document.documentElement.scrollTop > 650) {
     document.getElementById("subscribe").style.opacity = "1.0";
   } else {
     document.getElementById("subscribe").style.opacity = "0";
