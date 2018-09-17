@@ -4,27 +4,27 @@
   --yellow: #F2AF29;
   --dark:#161925;
   --blue:#23395B;
+  --lightgrey:#E0E0E0;
 };
 
 html, body {
   margin: 0px;
   padding: 0px;
   border: 0px;
-  background-color: transparent;
+  background-color: grey;
   font-family: 'Open Sans', sans-serif;
 }
 
 /* Create a sticky/fixed navbar */
 #navbar {
-
   overflow: hidden;
-  padding: 15px 10px; /* Large padding which will shrink on scroll (using JS) */
+  padding: 0.5em; /* Large padding which will shrink on scroll (using JS) */
   transition: 0.4s; /* Adds a transition effect when the padding is decreased */
   position: fixed; /* Sticky/fixed navbar */
   width: 100%;
   top: 0; /* At the top */
   z-index: 99; 
-  background-color: transparent;
+  background-color: var(--grey);
 }
 
 /* Style the navbar links */
@@ -32,7 +32,7 @@ html, body {
   float: left;
   color: white;
   text-align: center;
-  padding: 12px;
+  padding: 0.7em;
   text-decoration: none;
   font-size: 18px; 
   border-radius: 4px;
@@ -58,7 +58,6 @@ html, body {
 #navbar-right {
   float: right;
   padding: 30px 10px;
-  width:40%;
   transition: 0.4s;
 }
 
@@ -83,24 +82,17 @@ html, body {
   }
 }
 
-#banner{
-    width:100%;
-    height:0;
-    padding-bottom: 55%;
-}
-
-#banner img{
-  position:absolute;
-  position:left top;
-
-  z-index: -1;
-  width:100%;
+.image{
+  height:600px;
+  margin-bottom: 2vw;
 }
 
 .date{
-    padding:120px 0 0 0;
+    position:relative;
+    top:-500px;
+    left:150px;
     color: white;
-    font-size:8vw;
+    font-size:4vw;
 }
 
 #about{
@@ -108,9 +100,20 @@ html, body {
 }
 
 #today{
-  margin:20px 80px 20px 80px;
-  opacity:0;
+  margin:10vw 0vw;
+  /*opacity:0;*/
   transition:0.6s;
+}
+
+#today img{
+  position:left top;
+  z-index: 0;
+  width:100%;
+}
+
+#today .container{
+  /*margin: 0vw; having margin aligns it left? */
+  background: var(--lightgrey);
 }
 
 .heading{
@@ -125,7 +128,7 @@ html, body {
 .challenge-block{
   color: var(--grey);
   text-align:center;
-  padding:15px;
+  padding:30px;
 }
 
 .challenge-block a{
@@ -139,8 +142,8 @@ html, body {
 }
 
 #subscribe{
-  opacity: 0;
-  transition:0.6s;
+  /*opacity: 0; for fade in effect*/ 
+  /*transition:0.6s;*/
 }
 
 #subscribe-container{
