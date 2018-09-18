@@ -10,31 +10,68 @@
 <div id="today">
     <div class="container">
         <div class="row fill-container align-items-bottom">
+
+            <!--BANNER IMAGE-->
             <div class="image">
               <img src="{{url_for('static', filename='banner.jpg')}}">
               <div class="date">
-                {{records[i]['day'] + ' · ' + 
-                  records[i]['date'].split('/')[0]+'.' +
-                  records[i]['date'].split('/')[1]+'.' +
-                  records[i]['date'].split('/')[2]}}
+                {{records[i]['day']+' · '+
+                records[i]['date'].replace('/','.') }}
               </div>
             </div>
 
+            <!--ADS COLUMN-->
             <div class = "col-12 col-md-6 challenge-block">
-              <h3>ADS Bible Reading</h3>
+              <h1 class="heading">ADS</h1>
+
+              {% if records[i]['ads_bible_reading'] %}
+              <h4 class="subheading"> Bible Reading</h4>
               <p> 
-                {% for verse in records[i]['ads_bible_reading'].split(', ') %}
+              {% for verse in records[i]['ads_bible_reading'].split(', ') %}
+                {% if verse[0] == "*" %}
+                  <p>{{verse[1:]}}</p>
+                {% else %}
+                  <a href="https://www.biblegateway.com/passage/?search={{verse}}&version=NIV" target="_blank">{{verse}}</a><br>
+                {% endif %}
+              {% endfor %}
+              </p>
+              {% endif %}
+
+              {% if records[i]['ads_memorization'] %}
+              <h4 class="subheading">Memorization</h4>
+              <p>
+                {% for verse in records[i]['ads_memorization'].split(',') %}
                   {% if verse[0] == "*" %}
                     <p>{{verse[1:]}}</p>
                   {% else %}
-                    <a href="https://www.biblegateway.com/passage/?search={{verse}}&version=NIV" target="_blank">{{verse}}</a><br>
+                    <a href="https://www.biblegateway.com/passage/?search={{verse}}&version=NIV">{{verse}}</a><br>
                   {% endif %}
                 {% endfor %}
               </p>
+              {% endif %}
+
+              {% if records[i]['ads_meditation'] %}
+              <h4 class="subheading">Meditation</h4>
+              <p>
+                  {{records[i]['ads_meditation']}}<br>
+              </p>
+              {% endif %}
+
+              {% if records[i]['ads_faith_challenge'] %}
+              <h4 class="subheading">Faith In Action Challenge</h4>
+              <p>
+                {{records[i]['ads_faith_challenge']}}<br>
+              </p>
+              {% endif %}
+
             </div>
 
+            <!--PRAXIS COLUMN-->
             <div class = "col-12 col-md-6 challenge-block">
-              <h3>Praxis Bible Reading</h3>
+              <h1 class="heading">Praxis</h1>
+
+              {%if records[i]['praxis_bible_reading']%}
+              <h4 class="subheading">Bible Reading</h4>
               <p> 
                 {% for verse in records[i]['praxis_bible_reading'].split(',') %}
                   {% if verse[0] == "*" %}
@@ -44,12 +81,12 @@
                   {% endif %}
                 {% endfor %}
               </p>
-            </div>
+              {% endif %}
 
-            <div class = "col-12 col-md-6 challenge-block">
-              <h3>Memorization</h3>
+              {% if records[i]['ads_memorization'] %}
+              <h4 class="subheading">Memorization</h4>
               <p>
-                {% for verse in records[i]['memorization'].split(',') %}
+                {% for verse in records[i]['ads_memorization'].split(',') %}
                   {% if verse[0] == "*" %}
                     <p>{{verse[1:]}}</p>
                   {% else %}
@@ -57,21 +94,23 @@
                   {% endif %}
                 {% endfor %}
               </p>
+              {% endif %}
+
+              {% if records[i]['praxis_meditation'] %}
+              <h4 class="subheading">Meditation</h4>
+              <p>
+                  {{records[i]['praxis_meditation']}}<br>
+              </p>
+              {% endif %}
+
+              {% if records[i]['praxis_faith_challenge'] %}
+              <h4 class="subheading">Faith In Action Challenge</h4>
+              <p>
+                {{records[i]['praxis_faith_challenge']}}<br>
+              </p>
+              {% endif %}
             </div>
 
-            <div class = "col-12 col-md-6 challenge-block">
-              <h3>Meditation</h3>
-              <p>
-                  {{records[i]['meditation']}}<br>
-              </p>
-            </div>
-
-            <div class = "col-12 col-md-6 challenge-block">
-              <h3>Faith In Action Challenge</h3>
-              <p>
-                {{records[i]['faith_challenge']}}<br>
-              </p>
-            </div>
         </div>
     </div>
 </div>
