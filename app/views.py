@@ -3,27 +3,32 @@
 # $ export FLASK_ENV=development        code changes refreshed
 
 from flask import Flask, redirect, url_for, request, render_template
-
 from app import app
+import datetime
+
+import spreadsheet # spreadsheet.py
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         return redirect(url_for('subscribed'))
     else:
-        return render_template('index.html')
+        # find today's date and find the index to print
+        indexZero = datetime.date(2018,9,14)
+        today = datetime.date.today()
+        indexToday = (today - indexZero).days
+        return render_template('index.html', 
+                               records=spreadsheet.getSpreadsheet(), 
+                               indexToday=indexToday)
 
 @app.route('/subscribed', methods=['GET'])
 def subscribed():
     return render_template('subscribed.html')
 
-@app.route('/admin', methods=['GET', 'POST'])
-def admin():
-    if request.method == 'POST':
-        return render_template('admin.html')
-        # change to authentication
-    else:
-        return render_template('admin.html')
+@app.route('/about', methods=['GET'])
+def about():
+    return render_template('about.html')
 
 if __name__ == '__main__':
     app.run()
