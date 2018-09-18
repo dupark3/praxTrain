@@ -178,3 +178,22 @@ html, body {
 #subscribe-button:hover{
   background-color: var(--red);
 }
+
+
+/*ABOUT*/
+#about{
+  margin:10vw 0vw;
+  padding: 1vw;
+}
+
+#about .container{
+  background-color: var(--lightgrey);
+  color: var(--grey);
+  padding: 2vw;
+}
+
+#faq .container{
+  background-color: var(--lightgrey);
+  color: var(--grey);
+  padding: 2vw;
+}
