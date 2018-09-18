@@ -18,6 +18,8 @@ def index():
         indexZero = datetime.date(2018,9,14)
         today = datetime.date.today()
         indexToday = (today - indexZero).days
+        if datetime.datetime.now().hour >= 20:
+            indexToday += 1
         return render_template('index.html', 
                                records=spreadsheet.getSpreadsheet(), 
                                indexToday=indexToday)
