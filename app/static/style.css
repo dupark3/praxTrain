@@ -82,9 +82,11 @@ html, body {
   }
 }
 
-.image{
+#banner-image-container{
   height:600px;
   margin-bottom: 2vw;
+  overflow:hidden;
+  vertical-align: middle;
 }
 
 .date{

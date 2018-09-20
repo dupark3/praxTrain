@@ -5,20 +5,23 @@
 
 {% block body %}
 
-<!--loop through at most five rows of spreadsheet data-->
+<!--loop through seven most recent rows of data-->
 {% for i in range(indexToday, indexToday - 7, -1) %}
 <div id="today">
     <div class="container">
         <div class="row fill-container align-items-bottom">
 
-            <!--BANNER IMAGE-->
-            <div class="image">
-              <img src="{{url_for('static', filename='banner.jpg')}}">
+            <!--BANNER IMAGE-->            
+            <div id="banner-image-container">
+              <!--Rotate through 14 pictures-->
+              {% set imgFile = 'banner' + (records[i]['post_id'] | int % 14)| string + '.jpg'%}
+              <img src="{{url_for('static', filename=imgFile)}}">
               <div class="date">
                 {{records[i]['day']+' · '+
                 records[i]['date'].replace('/','.') }}
               </div>
             </div>
+            
 
             <!--ADS COLUMN-->
             <div class = "col-12 col-md-6 challenge-block">
