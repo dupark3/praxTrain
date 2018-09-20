@@ -18,8 +18,16 @@ def index():
         indexZero = datetime.date(2018,9,14)
         today = datetime.date.today()
         indexToday = (today - indexZero).days
-        if datetime.datetime.now().hour >= 20:
+
+        # show tomorrow's post starting at 8pm
+        timeNow = datetime.datetime.now()
+        if timeNow.hour >= 20:
             indexToday += 1
+        spreadsheet.refreshKey()
+        # Refresh gspreads API credentials every 45 minutes (2700 seconds)
+        if (spreadsheet.lastRefreshTime - timeNow).seconds > 2700:
+            spreadsheet.refreshKey()
+
         return render_template('index.html', 
                                records=spreadsheet.getSpreadsheet(), 
                                indexToday=indexToday)
