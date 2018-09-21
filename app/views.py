@@ -23,7 +23,7 @@ def index():
         timeNow = datetime.datetime.now()
         if timeNow.hour >= 20:
             indexToday += 1
-        spreadsheet.refreshKey()
+        
         # Refresh gspreads API credentials every 45 minutes (2700 seconds)
         if (spreadsheet.lastRefreshTime - timeNow).seconds > 2700:
             spreadsheet.refreshKey()
