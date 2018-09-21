@@ -12,9 +12,13 @@ lastRefreshTime = datetime.datetime.now()
 def refreshKey():
     creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
     client = gspread.authorize(creds)
+    sheet = client.open('PraxTrainSheet').sheet1
     lastRefreshTime = datetime.datetime.now()
 
 def getSpreadsheet():    
+    creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+    client = gspread.authorize(creds)
+    sheet = client.open('PraxTrainSheet').sheet1
     return sheet.get_all_records()
 # for item in records:
 #     print(item['day'] + ' ' + item['date'])
