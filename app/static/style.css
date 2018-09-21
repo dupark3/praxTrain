@@ -143,6 +143,10 @@ html, body {
   text-decoration: underline;
 }
 
+.today-subscribe{
+  margin:0.2vw 2vw;
+}
+
 #subscribe{
   /*opacity: 0; for fade in effect*/ 
   /*transition:0.6s;*/
