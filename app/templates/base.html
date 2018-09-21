@@ -19,10 +19,13 @@
         <a href="/" id="logo">
           <img id="logo-image" src="{{url_for('static', filename='logo.png')}}"/>
         </a>
-        <div id="navbar-right">
+        <div class="navbar-right" id="navbar-right">
           <a href="/about">What is PraxTrain?</a>
           <a href="/#today">Today's Training</a>
           <a href="/#subscribe">Get Emails</a>
+          <a href="javascript:void(0);" class="icon" onclick="toggleMobileNavbar()">
+            Menu
+          </a>
         </div>
       </div>
 

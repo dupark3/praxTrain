@@ -21,3 +21,12 @@ function scrollFunction() {
     document.getElementById("subscribe").style.opacity = "0";
   }*/
 }
+
+function toggleMobileNavbar() {
+    var x = document.getElementById("navbar-right");
+    if (x.className === "navbar-right") {
+        x.className += " responsive";
+    } else {
+        x.className = "navbar-right";
+    }
+}

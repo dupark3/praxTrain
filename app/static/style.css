@@ -23,7 +23,7 @@ html, body {
   position: fixed; /* Sticky/fixed navbar */
   width: 100%;
   top: 0; /* At the top */
-  z-index: 99; 
+  z-index: 98; 
   background-color: var(--grey);
 }
 
@@ -42,7 +42,7 @@ html, body {
     height:75px;
     transition: 0.4s;
     padding:3px;
-    margin: 0px 50px 0px 0px;
+    margin: 0px;
 }
 
 /* Links on mouse-over */
@@ -67,19 +67,36 @@ html, body {
   padding-right: 50px;
 }
 
-/* Add responsiveness - on screens less than 580px wide, display the navbar vertically instead of horizontally */
-@media screen and (max-width: 580px) {
-  #navbar {
-    padding: 30px 10px !important; /* Use !important to make sure that JavaScript doesn't override the padding on small screens */
+/* Hide the link that should open and close the topnav on small screens */
+#navbar-right .icon {
+    display: none;
+}
+
+/* When the screen is less than 1000 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 1000px) {
+  #navbar-right a:not(.icon){
+    display:none;
   }
-  #navbar a {
-    float: none;
+  #navbar-right a.icon {
     display: block;
-    text-align: left;
   }
-  #navbar-right {
-    float: none;
+  .responsive{
+    background-color: red;
   }
+  .responsive a{
+    display: block;
+    font-size: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: red;
+    z-index:99;
+  }
+
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 1000px) {
+
 }
 
 #banner-image-container{
@@ -101,7 +118,7 @@ html, body {
     top:30%;
     left:12%;
     color: white;
-    font-size:5rem;
+    font-size:50px;
 }
 
 #about{
