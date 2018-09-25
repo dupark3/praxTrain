@@ -2,8 +2,7 @@ window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
   if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-    document.getElementById("navbar").style.padding = "0px";
-    document.getElementById("navbar-right").style.padding = "5px 10px";
+    document.getElementByClassName("navbar").style.height = "100px";
     document.getElementById("logo-image").style.height = "40px";
   } else {
     document.getElementById("navbar").style.padding = "0.5em";

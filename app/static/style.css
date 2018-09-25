@@ -11,18 +11,21 @@ html, body {
   margin: 0px;
   padding: 0px;
   border: 0px;
-  background-color: grey;
   font-family: 'Open Sans', sans-serif;
 }
 
 /* Create a sticky/fixed navbar */
 .navbar{
-  background-color: var(--grey);
+  background-color: transparent;
   display:flex;
   padding:16px;
   color:white;
   justify-content: center;
   align-items:center;
+  position:absolute;
+  z-index: 99;
+  left:50vw;
+  right:50vw;
 }
 
 .navbar-items{
@@ -30,7 +33,7 @@ html, body {
 }
 
 .navbar-link{
-  margin:10px 20px;
+  margin:10px 50px;
 }
 
 .navbar-link a{
@@ -63,6 +66,26 @@ html, body {
   .navbar-toggle-show{
     display:flex;
   }
+}
+
+.hero{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("hero.jpg");
+  height: 90vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color:white;
+}
+
+.hero-logo{
+  margin:12px;
+}
+.hero-phrase{
+  margin:12px;
 }
 
 #banner-image-container{

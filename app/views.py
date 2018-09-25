@@ -21,7 +21,7 @@ def index():
 
         # show tomorrow's post starting at 8pm
         timeNow = datetime.datetime.now()
-        if timeNow.hour >= 20:
+        if timeNow.hour >= 24:
             indexToday += 1
         
         # Refresh gspreads API credentials every 45 minutes (2700 seconds)
