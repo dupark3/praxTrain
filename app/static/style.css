@@ -16,87 +16,53 @@ html, body {
 }
 
 /* Create a sticky/fixed navbar */
-#navbar {
-  overflow: hidden;
-  padding: 0.5em; /* Large padding which will shrink on scroll (using JS) */
-  transition: 0.4s; /* Adds a transition effect when the padding is decreased */
-  position: fixed; /* Sticky/fixed navbar */
-  width: 100%;
-  top: 0; /* At the top */
-  z-index: 98; 
+.navbar{
   background-color: var(--grey);
+  display:flex;
+  padding:16px;
+  color:white;
+  justify-content: center;
+  align-items:center;
 }
 
-/* Style the navbar links */
-#navbar a {
-  float: left;
-  color: white;
-  text-align: center;
-  padding: 0.7em;
+.navbar-items{
+  display:flex;
+}
+
+.navbar-link{
+  margin:10px 20px;
+}
+
+.navbar-link a{
   text-decoration: none;
-  font-size: 18px; 
-  border-radius: 4px;
+  color:white;
 }
 
-#navbar #logo-image{
-    height:75px;
-    transition: 0.4s;
-    padding:3px;
-    margin: 0px;
+.navbar-link-toggle{
+  display:none;
 }
 
-/* Links on mouse-over */
-#navbar a:hover {
-  color: var(--red);
-}
+@media only screen and (max-width: 768px) {
+  .navbar{
+    justify-content: left;
+  }
+  .navbar-items{
+    display:flex;
+    flex-direction: column;
+  }
 
-#navbar #logo-image:hover{
-  padding: 0px;
-}
-
-/* Display some links to the right */
-#navbar-right {
-  float: right;
-  padding: 30px 10px;
-  transition: 0.4s;
-}
-
-#navbar-right a{
-  font-size: 20px;
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-/* Hide the link that should open and close the topnav on small screens */
-#navbar-right .icon {
-    display: none;
-}
-
-/* When the screen is less than 1000 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-@media screen and (max-width: 1000px) {
-  #navbar-right a:not(.icon){
+  .navbar-item{
     display:none;
   }
-  #navbar-right a.icon {
-    display: block;
-  }
-  .responsive{
-    background-color: red;
-  }
-  .responsive a{
-    display: block;
-    font-size: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
-    background-color: red;
-    z-index:99;
+
+  .navbar-link-toggle{
+    display:initial;
+    cursor:pointer;
   }
 
-}
-
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-@media screen and (max-width: 1000px) {
-
+  .navbar-toggle-show{
+    display:flex;
+  }
 }
 
 #banner-image-container{

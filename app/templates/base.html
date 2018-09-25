@@ -8,6 +8,9 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
     <meta name="google-site-verification" content="ACz1lCWuBnb9e4pmT5elDKr5A2xds0W78wMQNNeKEMA" />
@@ -15,19 +18,32 @@
   </head>
 
   <body>
-      <div id="navbar">
+
+      <div class="navbar">
+        <div class="navbar-items">
+          
+          <div class="navbar-link navbar-link-toggle">
+            <i class="fas fa-bars"></i>
+          </div> <!-- Hidden in desktop view -->
+
+          <div class="navbar-link navbar-item">
+            <a href="/">Home</a>
+          </div>
+          <div class="navbar-link navbar-item">
+            <a href="/about">About</a>
+          </div>
+          <div class="navbar-link navbar-item">
+            <a href="/#subscribe">Subscribe</a>
+          </div>
+          
+        </div>
+      </div> <!--navbar-->
+
+      <div class="hero">
         <a href="/" id="logo">
           <img id="logo-image" src="{{url_for('static', filename='logo.png')}}"/>
         </a>
-        <div class="navbar-right" id="navbar-right">
-          <a href="/about">What is PraxTrain?</a>
-          <a href="/#today">Today's Training</a>
-          <a href="/#subscribe">Get Emails</a>
-          <a href="javascript:void(0);" class="icon" onclick="toggleMobileNavbar()">
-            Menu
-          </a>
-        </div>
-      </div>
+      </div> <!--hero-->
 
       {% block body %}
       {% endblock %}

@@ -10,6 +10,7 @@ function scrollFunction() {
     document.getElementById("navbar-right").style.padding = "30px 10px";
     document.getElementById("logo-image").style.height = "75px";
   }
+}
 /*  if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
     document.getElementById("today").style.opacity = "1.0";
   } else {
@@ -20,13 +21,12 @@ function scrollFunction() {
   } else {
     document.getElementById("subscribe").style.opacity = "0";
   }*/
+
+
+function classToggle() {
+  const navs = document.querySelectorAll('.navbar-item')  
+  navs.forEach(nav => nav.classList.toggle('navbar-toggle-show'));
 }
 
-function toggleMobileNavbar() {
-    var x = document.getElementById("navbar-right");
-    if (x.className === "navbar-right") {
-        x.className += " responsive";
-    } else {
-        x.className = "navbar-right";
-    }
-}
+document.querySelector('.navbar-link-toggle')
+  .addEventListener('click', classToggle);
