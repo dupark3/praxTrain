@@ -38,6 +38,7 @@ __pycache__/
 *.sqlite
 *.txt
 *.json
+*.db
 
 # Cmake files #
 ###############
