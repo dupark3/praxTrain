@@ -5,6 +5,7 @@
 from flask import Flask, redirect, url_for, request, render_template
 from app import app
 import datetime
+import sqlite3
 
 import spreadsheet # spreadsheet.py
 
@@ -12,7 +13,26 @@ import spreadsheet # spreadsheet.py
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        return redirect(url_for('subscribed'))
+        msg = ""
+        try:
+            msg = "Record successfully added"
+            firstName = request.form['firstName']
+            lastName = request.form['lastName']
+            email = request.form['email']
+            print("TEST")
+            con = sqlite3.connect("app/database.db")
+            cur = con.cursor()
+            cur.execute('''INSERT INTO subscribers (firstName, lastName, email)
+                VALUES (?,?,?)''',(firstName, lastName, email) )
+            con.commit()
+        except:
+            con.rollback()
+            msg = "error in insert operation"
+        finally:
+            return render_template('subscribed.html', msg=msg)
+            con.close()
+    
+    # METHOD = 'GET'    
     else:
         # find today's date and find the index to print
         indexZero = datetime.date(2018,9,14)
