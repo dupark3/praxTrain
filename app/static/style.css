@@ -30,10 +30,15 @@ html, body {
 
 .navbar-items{
   display:flex;
+  font-size: 20px;
 }
 
 .navbar-link{
   margin:10px 50px;
+}
+
+.navbar-link a:hover{
+  color:var(--red);
 }
 
 .navbar-link a{
@@ -48,6 +53,10 @@ html, body {
 @media only screen and (max-width: 768px) {
   .navbar{
     justify-content: left;
+    left:0;
+  }
+  .navbar-link{
+    margin: 0px;
   }
   .navbar-items{
     display:flex;
@@ -69,8 +78,8 @@ html, body {
 }
 
 .hero{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("hero.jpg");
-  height: 90vh;
+  background-image: linear-gradient(rgba(0, 0, 20, 0.5), rgba(20, 0, 0, 0.5)), url(/static/hero.jpg);
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -84,8 +93,45 @@ html, body {
 .hero-logo{
   margin:12px;
 }
+
 .hero-phrase{
   margin:12px;
+}
+
+.description{
+  padding:2em;
+  background:var(--lightgrey);
+  color:black;
+}
+
+.description-name h1{
+  font-size: calc(36px + 2.4vw);
+  color:var(--red);
+}
+
+.description-name{
+  padding-top:2em;
+}
+
+.description-about{
+  font-size:1.5em;
+}
+
+.description-info div{
+  padding:1em;
+}
+
+.description-info h3{
+  font-weight:bold;
+}
+
+.description-info b{
+  color:var(--red);
+}
+
+.description-info ul{
+  list-style:none;
+  padding-left:24px;
 }
 
 #banner-image-container{
@@ -107,26 +153,35 @@ html, body {
     top:30%;
     left:12%;
     color: white;
-    font-size:50px;
+    font-size:5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .date{
+    font-size:2rem;
+  }
 }
 
 #about{
     color:white;
 }
 
-#today{
-  margin:10vw 0vw;
+.today{
+  background: linear-gradient(rgba(50,50,50,0.5), rgba(173, 52, 62,0.3), rgba(60,50,50,0.5)), url(/static/background.jpg) no-repeat center center fixed;
+
+  background-size:cover;
+  padding:10vw 0vw;
   /*opacity:0;*/
   transition:0.6s;
 }
 
-#today img{
+.today img{
   position:left top;
   z-index: 0;
   width:100%;
 }
 
-#today .container{
+.today .container{
   /*margin: 0vw; having margin aligns it left? */
   background: var(--lightgrey);
 }
@@ -137,12 +192,12 @@ html, body {
   font-weight:600;
   text-decoration: underline;
   margin:40px 20px 20px 20px;
-  
 }
 
 .challenge-block{
   color: var(--grey);
   text-align:center;
+  padding:0px 100px;
 }
 
 .challenge-block a{

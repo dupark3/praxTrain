@@ -5,9 +5,48 @@
 
 {% block body %}
 
+<div class="description">
+  <div class="container">
+    <div class="row fill-container align-items-top">
+      <div class="col-12 col-md-4 description-name">
+        <h1>PraxTrain 2018</h1>
+      </div>
+
+      <div class="col-12 col-md-8 description-info">
+        <div class="row fill-container align-items-top">
+          <div class="col-12 description-about">
+            We desire to live out a theology that works in our world and culture today.  As <b>followers of Jesus</b>, we want our beliefs, our teachings, and our doctrines to be lived out in our day to day lives in <b>tangible and practical ways</b>. 
+          </div>
+          <div class="col-12 col-md-4 description-six-elements">
+            <h3>Six Elements of Practice</h5>
+            PraxTrain was created to help people do this through 6 elements of practice:
+            <ul>
+            <li>- Bible Reading</li>
+            <li>- Scripture Memorization</li>
+            <li>- Verse Meditation</li>
+            <li>- Journal Reflection</li>
+            <li>- Intercessory Prayer</li>
+            <li>- Faith Activation</li>
+            </ul>
+          </div>
+          <div class="col-12 col-md-4 description-ads-track">
+            <h3>ADS Track</h3>
+            The ADS track was developed for students in the Antioch Discipleship School and follows the schools reading schedule (about 30min-1hour of reading and reflecting).  
+          </div>
+          <div class="col-12 col-md-4 description-praxis-track">
+            <h3>Praxis Track</h3>
+            The Praxis track is for those with busier schedules but desire the daily prompts to be in the word and be living out their faith (15-30 min).  You can jump into either track, it's up to you!
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!--loop through seven most recent rows of data-->
 {% for i in range(indexToday, indexToday - 7, -1) %}
-<div id="today">
+<div class="today">
     <div class="container">
         <div class="row fill-container align-items-bottom">
 
@@ -129,8 +168,11 @@
       </div>
       <div class ="col-3"></div>
       <form class="col-6" id="subscribe-form" action="" method="POST">
-        Name:<br>
-        <input type="text" name="name">
+        First Name:<br>
+        <input type="text" name="firstName">
+        <br>
+        Last Name:<br>
+        <input type="text" name="lastName">
         <br>
         Email:<br>
         <input type="text" name="email">
