@@ -39,6 +39,7 @@ __pycache__/
 *.txt
 *.json
 *.db
+admininfo.py
 
 # Cmake files #
 ###############

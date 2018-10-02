@@ -3,28 +3,30 @@
 # $ export FLASK_ENV=development        code changes refreshed
 
 from flask import Flask, redirect, url_for, request, render_template
-from app import app
+
+from app import app # app.py
+import spreadsheet # spreadsheet.py
+import admininfo # admininfo.py
+
 import datetime
 import sqlite3
-
-import spreadsheet # spreadsheet.py
-
+from werkzeug.security import check_password_hash
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         msg = ""
         try:
-            msg = "Record successfully added"
             firstName = request.form['firstName']
             lastName = request.form['lastName']
             email = request.form['email']
-            print("TEST")
-            con = sqlite3.connect("app/database.db")
+            
+            con = sqlite3.connect("database.db")
             cur = con.cursor()
             cur.execute('''INSERT INTO subscribers (firstName, lastName, email)
                 VALUES (?,?,?)''',(firstName, lastName, email) )
             con.commit()
+            msg = "Record successfully added"
         except:
             con.rollback()
             msg = "error in insert operation"
@@ -59,6 +61,18 @@ def subscribed():
 @app.route('/about', methods=['GET'])
 def about():
     return render_template('about.html')
+
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    if request.method == 'POST' and request.form['username'] == admininfo.username and check_password_hash(admininfo.pw_hash, request.form['password']):
+        con = sqlite3.connect("database.db")
+        cur = con.cursor()
+        cur.execute('SELECT * FROM subscribers')
+        rows = cur.fetchall()
+        con.close()
+        return render_template('admin.html', rows=rows)
+    else:
+        return render_template('adminlogin.html')
 
 if __name__ == '__main__':
     app.run()
