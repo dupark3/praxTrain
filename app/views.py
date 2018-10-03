@@ -7,10 +7,13 @@ from flask import Flask, redirect, url_for, request, render_template
 from app import app # app.py
 import spreadsheet # spreadsheet.py
 import admininfo # admininfo.py
+import dailyemail
 
 import datetime
 import sqlite3
 from werkzeug.security import check_password_hash
+import threading
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -36,23 +39,9 @@ def index():
     
     # METHOD = 'GET'    
     else:
-        # find today's date and find the index to print
-        indexZero = datetime.date(2018,9,14)
-        today = datetime.date.today()
-        indexToday = (today - indexZero).days
-
-        # show tomorrow's post starting at 8pm
-        timeNow = datetime.datetime.now()
-        if timeNow.hour >= 24:
-            indexToday += 1
-        
-        # Refresh gspreads API credentials every 45 minutes (2700 seconds)
-        if (spreadsheet.lastRefreshTime - timeNow).seconds > 2700:
-            spreadsheet.refreshKey()
-
         return render_template('index.html', 
                                records=spreadsheet.getSpreadsheet(), 
-                               indexToday=indexToday)
+                               indexToday=spreadsheet.getTodayIndex())
 
 @app.route('/subscribed', methods=['GET'])
 def subscribed():
@@ -75,4 +64,6 @@ def admin():
         return render_template('adminlogin.html')
 
 if __name__ == '__main__':
+    threadObj = threading.Thread(target=dailyemail.server)
+    threadObj.start()
     app.run()
