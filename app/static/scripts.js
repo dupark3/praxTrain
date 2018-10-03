@@ -1,3 +1,4 @@
+/*
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
@@ -10,7 +11,7 @@ function scrollFunction() {
     document.getElementById("logo-image").style.height = "75px";
   }
 }
-/*  if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+  if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
     document.getElementById("today").style.opacity = "1.0";
   } else {
     document.getElementById("today").style.opacity = "0";
@@ -19,7 +20,8 @@ function scrollFunction() {
     document.getElementById("subscribe").style.opacity = "1.0";
   } else {
     document.getElementById("subscribe").style.opacity = "0";
-  }*/
+  }
+*/
 
 
 function classToggle() {
