@@ -1,0 +1,170 @@
+<!--recent.html-->
+
+{% extends "base.html" %}
+{% block title %}PraxTrain Recent{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <div class="row fill-container align-items-center">
+    <div id="today-header" class="today-header col-12">
+      <h1>Recent Praxis</h1>
+    </div>
+  </div>
+</div>
+
+{% for i in range(indexToday-1, indexToday-8, -1) %}
+<!--today's post is shown in the homepage-->
+<div id="today" class="today">
+  <div class="row fill-container align-items-bottom">
+      <!--BANNER IMAGE-->            
+      <div id="banner-image-container">
+        <!--Rotate through 14 pictures-->
+        {% set imgFile = 'banner' + (records[i]['post_id'] | int % 14)| string + '.jpg'%}
+        <img src="{{url_for('static', filename=imgFile)}}">
+        <div class="date">
+          {{records[i]['day']+' · '+
+          records[i]['date'].replace('/','.') }}
+        </div>
+      </div>
+      
+
+      <!--ADS COLUMN-->
+      <div class = "col-12 col-md-6 challenge-block">
+        <h1 class="heading">ADS</h1>
+
+        {% if records[i]['ads_bible_reading'] %}
+        <h4 class="subheading"> Bible Reading</h4>
+        <p> 
+        {% for verse in records[i]['ads_bible_reading'].split(', ') %}
+          {% if verse[0] == "*" %}
+            <p>{{verse[1:]}}</p>
+          {% else %}
+            <a href="https://www.biblegateway.com/passage/?search={{verse}}&version=NIV" target="_blank">{{verse}}</a><br>
+          {% endif %}
+        {% endfor %}
+        </p>
+        {% endif %}
+
+        {% if records[i]['ads_memorization'] %}
+        <h4 class="subheading">Scripture Memorization</h4>
+        <p>
+          {% for verse in records[i]['ads_memorization'].split(',') %}
+            {% if verse[0] == "*" %}
+              <p>{{verse[1:]}}</p>
+            {% else %}
+              <a href="https://www.biblegateway.com/passage/?search={{verse}}&version=NIV"  target="_blank">{{verse}}</a><br>
+            {% endif %}
+          {% endfor %}
+        </p>
+        {% endif %}
+
+        {% if records[i]['ads_verse_meditation'] %}
+        <h4 class="subheading">Verse Meditation</h4>
+        <p>
+          {% for verse in records[i]['ads_verse_meditation'].split(',') %}
+            {% if verse[0] == "*" %}
+              <p>{{verse[1:]}}</p>
+            {% else %}
+              <a href="https://www.biblegateway.com/passage/?search={{verse}}&version=NIV"  target="_blank">{{verse}}</a><br>
+            {% endif %}
+          {% endfor %}
+        </p>
+        {% endif %}
+
+        {% if records[i]['ads_journal_reflection'] %}
+        <h4 class="subheading">Journal Reflection</h4>
+        <p>
+            {{records[i]['ads_journal_reflection']}}<br>
+        </p>
+        {% endif %}
+
+        {% if records[i]['ads_intercessory_prayer'] %}
+        <h4 class="subheading">Intercessory Prayer</h4>
+        <p>
+            {{records[i]['ads_intercessory_prayer']}}<br>
+        </p>
+        {% endif %}
+
+        {% if records[i]['ads_faith_challenge'] %}
+        <h4 class="subheading">Faith Activation</h4>
+        <p>
+          {{records[i]['ads_faith_challenge']}}<br>
+        </p>
+        {% endif %}
+
+      </div>
+
+      <!--PRAXIS COLUMN-->
+      <div class = "col-12 col-md-6 challenge-block">
+        <h1 class="heading">Praxis</h1>
+
+        {%if records[i]['praxis_bible_reading']%}
+        <h4 class="subheading">Bible Reading</h4>
+        <p> 
+          {% for verse in records[i]['praxis_bible_reading'].split(',') %}
+            {% if verse[0] == "*" %}
+              <p>{{verse[1:]}}</p>
+            {% else %}
+              <a href="https://www.biblegateway.com/passage/?search={{verse}}&version=NIV" target="_blank">{{verse}}</a><br>
+            {% endif %}
+          {% endfor %}
+        </p>
+        {% endif %}
+
+        {% if records[i]['praxis_memorization'] %}
+        <h4 class="subheading">Memorization</h4>
+        <p>
+          {% for verse in records[i]['praxis_memorization'].split(',') %}
+            {% if verse[0] == "*" %}
+              <p>{{verse[1:]}}</p>
+            {% else %}
+              <a href="https://www.biblegateway.com/passage/?search={{verse}}&version=NIV"  target="_blank">{{verse}}</a><br>
+            {% endif %}
+          {% endfor %}
+        </p>
+        {% endif %}
+
+        {% if records[i]['praxis_verse_meditation'] %}
+        <h4 class="subheading">Verse Meditation</h4>
+        <p>
+          {% for verse in records[i]['praxis_verse_meditation'].split(',') %}
+            {% if verse[0] == "*" %}
+              <p>{{verse[1:]}}</p>
+            {% else %}
+              <a href="https://www.biblegateway.com/passage/?search={{verse}}&version=NIV"  target="_blank">{{verse}}</a><br>
+            {% endif %}
+          {% endfor %}
+        </p>
+        {% endif %}
+
+        {% if records[i]['praxis_journal_reflection'] %}
+        <h4 class="subheading">Journal Reflection</h4>
+        <p>
+            {{records[i]['praxis_journal_reflection']}}<br>
+        </p>
+        {% endif %}
+
+        {% if records[i]['praxis_intercessory_prayer'] %}
+        <h4 class="subheading">Intercessory Prayer</h4>
+        <p>
+            {{records[i]['praxis_intercessory_prayer']}}<br>
+        </p>
+        {% endif %}
+
+        {% if records[i]['praxis_faith_activation'] %}
+        <h4 class="subheading">Faith Activation</h4>
+        <p>
+          {{records[i]['praxis_faith_activation']}}<br>
+        </p>
+        {% endif %}
+      </div>
+      <form action="#subscribe" method="get" class="col-6 today-subscribe">
+        <input type="submit" id="subscribe-button" value="Get PraxTrain by Email">
+      </form>
+  </div>
+</div>
+{% endfor %}
+
+
+{% endblock %}

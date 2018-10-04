@@ -2,64 +2,80 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>{% block title %}{% endblock %}</title>
-    
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-
-    <!-- FontAwesome icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}?v=1.0">
-    <meta name="google-site-verification" content="ACz1lCWuBnb9e4pmT5elDKr5A2xds0W78wMQNNeKEMA" />
-
-  </head>
-
-  <body>
-
-      <div class="navbar">
-        <div class="navbar-items">
-          
-          <div class="navbar-link navbar-link-toggle">
-            <i class="fas fa-bars"></i>
-          </div> <!-- Hidden in desktop view -->
-
-          <div class="navbar-link navbar-item">
-            <a href="/">Home</a>
-          </div>
-          <div class="navbar-link navbar-item">
-            <a href="/about">About</a>
-          </div>
-          <div class="navbar-link navbar-item">
-            <a href="/#subscribe">Subscribe</a>
-          </div>
-
-        </div>
-      </div> <!--navbar-->
-
-      <div class="hero">
-        
-        <div class="hero-logo">
-          <a href="/" id="logo">
-            <img id="logo-image" src="{{url_for('static', filename='praxlogo.png')}}?v=1.0"/>
-          </a>
-        </div>
-        
-        <div class="hero-phrase">
-          <h4>Praxis(n): a theory that is put into practice</h4>
-        </div>
-        
-        <div class ="hero-today">
-          <a href="#today">See Today's Praxis</a>
-        </div>
-      </div> <!--hero-->
-
-      {% block body %}
-      {% endblock %}
-    
+<head>
+  <title>{% block title %}{% endblock %}</title>
   
-    <script src="{{url_for('static', filename='scripts.js')}}?v=1.0"></script>
-  </body>
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+  <!-- FontAwesome icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}?v=1.0">
+  <meta name="google-site-verification" content="ACz1lCWuBnb9e4pmT5elDKr5A2xds0W78wMQNNeKEMA" />
+
+</head>
+
+<body>
+
+    <div class="navbar">
+      <div class="navbar-items">
+        
+        <div class="navbar-link navbar-link-toggle">
+          <i class="fas fa-bars"></i>
+        </div> <!-- Hidden in desktop view -->
+
+        <div class="navbar-link navbar-item">
+          <a href="/">Home</a>
+        </div>
+        <div class="navbar-link navbar-item">
+          <a href="/about">About</a>
+        </div>
+        <div class="navbar-link navbar-item">
+          <a href="/#today-header">Today</a>
+        </div>
+        <div class="navbar-link navbar-item">
+          <a href="/recent">Recent</a>
+        </div>
+        <div class="navbar-link navbar-item">
+          <a href="/#subscribe">Subscribe</a>
+        </div>
+
+      </div>
+    </div> <!--navbar-->
+
+    <div class="hero">
+      
+      <div class="hero-logo">
+        <a href="/" id="logo">
+          <img id="logo-image" src="{{url_for('static', filename='praxlogo.png')}}?v=1.0"/>
+        </a>
+      </div>
+      
+      <div class="hero-phrase">
+        <h2>Praxis(n): a theory that is put into practice</h2>
+      </div>
+      
+      <div class ="hero-today">
+          <a href="#today">
+            <i class="fas fa-angle-double-down down-arrow"></i>
+            <br>See Today's Praxis Now
+          </a>
+      </div>
+    </div> <!--hero-->
+  
+  {% block body %}
+  {% endblock %}
+  
+  <div class="footer">
+    <div class="footer-items">
+        <p>© PraxTrain 2018</p>
+        <a href="/about" class="right-align">about</a>
+        <a href="/contact">contact</a>
+    </div>
+  </div>
+
+  <script src="{{url_for('static', filename='scripts.js')}}?v=1.0"></script>
+</body>
 </html>

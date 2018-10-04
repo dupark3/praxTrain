@@ -4,9 +4,21 @@
 {% block title %}PraxTrain Admin Login Page{% endblock %}
 
 {% block body %}
-<form action='' method='POST'>
-    Username: <input type='text' name='username'>
-    Password: <input type='password' name='password'>
-    <input type='submit' value='Login'>
-</form>
+<div class="container">
+    <div class="row fill-container align-items-bottom">
+        <div class="col-4">
+        </div>
+        <div class="col-6">
+            <form action='' method='POST'>
+                <div class="col-12">
+                    Username: <input type='text' name='username'>
+                </div>
+                <div class="col-12">
+                    Password: <input type='password' name='password'>
+                </div>
+                <input type='submit' value='Login'>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

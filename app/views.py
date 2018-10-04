@@ -43,6 +43,12 @@ def index():
                                records=spreadsheet.getSpreadsheet(), 
                                indexToday=spreadsheet.getTodayIndex())
 
+@app.route('/recent', methods=['GET'])
+def recent():
+    return render_template('recent.html', 
+                           records=spreadsheet.getSpreadsheet(), 
+                           indexToday=spreadsheet.getTodayIndex())    
+
 @app.route('/subscribed', methods=['GET'])
 def subscribed():
     return render_template('subscribed.html')
