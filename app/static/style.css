@@ -303,6 +303,23 @@ html, body {
   margin:0.4vw 2vw;
 }
 
+.see-recent a{
+  text-decoration: none;
+  color:var(--grey);
+  -webkit-animation:opacitychange 2s infinite;
+}
+
+.see-recent{
+  text-align: center;
+  font-size:24px;
+  margin-bottom:5vw;
+}
+
+.see-recent .right-arrow{
+  font-size:50px;
+}
+
+
 
 .footer{
   background-color: grey;
@@ -332,6 +349,9 @@ html, body {
 .footer-items a:hover{
   color:var(--red);
 }
+
+
+
 
 #subscribe{
   /*opacity: 0; for fade in effect*/ 
@@ -373,6 +393,8 @@ html, body {
 }
 
 
+
+
 /*ABOUT*/
 #about{
   margin:5vw 0;
@@ -391,6 +413,10 @@ html, body {
   padding: 3vw;
 }
 
+#faq .container{
+  padding: 3vw;
+}
+
 #faq{
   margin-bottom:5vw;
 }
@@ -398,6 +424,9 @@ html, body {
 @media only screen and (max-width: 768px) {
   #faq{
     margin-bottom:0;
+  }
+  #faq.container{
+    padding:10vw;
   }
 }
 
