@@ -48,6 +48,7 @@ html, body {
 
 .navbar-link-toggle{
   display:none;
+  font-size:32px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -374,18 +375,34 @@ html, body {
 
 /*ABOUT*/
 #about{
-  margin:10vw 0vw;
-  padding: 1vw;
+  margin:5vw 0;
+  padding: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  #about{
+    margin:10vw 0;
+  }
 }
 
 #about .container{
   background-color: var(--lightgrey);
   color: var(--grey);
-  padding: 2vw;
+  padding: 3vw;
+}
+
+#faq{
+  margin-bottom:5vw;
+}
+
+@media only screen and (max-width: 768px) {
+  #faq{
+    margin-bottom:0;
+  }
 }
 
 #faq .container{
   background-color: var(--lightgrey);
   color: var(--grey);
-  padding: 2vw;
+  padding: 3vw;
 }
