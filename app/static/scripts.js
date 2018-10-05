@@ -1,4 +1,5 @@
 /*
+// SHRINKING STICKY NAVBAR
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
@@ -23,11 +24,32 @@ function scrollFunction() {
   }
 */
 
-
+// NAVBAR MOBILE MENU
+// navbar-link-toggle is the hamburger menu of mobile view,
+// other navbar-items toggle to show and not show on click of menu
 function classToggle() {
   const navs = document.querySelectorAll('.navbar-item')  
   navs.forEach(nav => nav.classList.toggle('navbar-toggle-show'));
 }
-
 document.querySelector('.navbar-link-toggle')
   .addEventListener('click', classToggle);
+
+
+// SUBSCRIPTION MODAL
+// Get the divs
+var modal = document.getElementById('myModal');
+var btns = document.querySelectorAll(".myBtn");
+
+// When the user clicks the button, open the modal 
+for (var i = 0; i < btns.length; i++){
+  btns[i].onclick = function() {
+      modal.style.display = "block";
+  }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
