@@ -1,7 +1,7 @@
 <!-- subscribed.html-->
 
 {% extends "indexbase.html" %}
-{% block title %}Subscribed{% endblock %}
+{% block title %}PraxTrain{% endblock %}
 {% block body %}
 
 <div class="description">
@@ -16,12 +16,12 @@
         </h1>
       </div>
 
-      <div class="col-12 description-about">
+      <div class="col-12 description-about fade">
         We desire to live out a theology that works in our world and culture today.  As <b>followers of Jesus</b>, we want our beliefs, our teachings, and our doctrines to be lived out in our day to day lives in <b>tangible and practical ways</b>. </p>
       </div>
 
       <div class="col-0 col-md-3"></div>
-      <div class="col-12 col-md-6 description-six-elements">
+      <div class="col-12 col-md-6 description-six-elements fade">
         <h3>The Six Elements of PraxTrain</h3>
         <ul>
           <li>- Bible Reading</li>
@@ -34,11 +34,11 @@
       </div>
       <div class="col-0 col-md-3"></div>
 
-      <div class="col-12 col-md-6 description-ads-track">
+      <div class="col-12 col-md-6 description-ads-track fade">
         <h3>The ADS Track</h3>
         <p>The ADS track was developed for students in the Antioch Discipleship School and follows the schools reading schedule (about 30min-1hour of reading and reflecting).  </p>
       </div>
-      <div class="col-12 col-md-6 description-praxis-track">
+      <div class="col-12 col-md-6 description-praxis-track fade">
         <h3>The Praxis Track</h3>
         <p>The Praxis track is for those with busier schedules but desire the daily prompts to be in the word and be living out their faith (15-30 min).  You can jump into either track, it's up to you!</p>
       </div>
@@ -67,7 +67,7 @@
       <div id="banner-image-container">
         <!--Rotate through 14 pictures-->
         {% set imgFile = 'banner' + (records[indexToday]['post_id'] | int % 14)| string + '.jpg'%}
-        <img src="{{url_for('static', filename=imgFile)}}?v=1.3">
+        <img src="{{url_for('static', filename=imgFile)}}?v=1.6">
         <div class="date">
           {{records[indexToday]['day']+' · '+
           records[indexToday]['date'].replace('/','.') }}

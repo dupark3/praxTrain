@@ -2,8 +2,8 @@
 
 <!--subscription popup modal, display none by default-->
 <div id="myModal" class="modal">
-    <div class="modal-content">
-        
+    <div id="modal-content" class="modal-content">
+
         <div class="modal-header">
           <span class="close">&emsp;</span>
         </div>
@@ -15,7 +15,7 @@
           
             <form id="subscribe-form" action="/subscribed" method="POST">
               First Name:
-              <input type="text" name="firstName" autofocus="autofocus">
+              <input id="firstNameSub" type="text" name="firstName">
               <br>
               Last Name:
               <input type="text" name="lastName">
