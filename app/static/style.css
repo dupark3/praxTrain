@@ -37,18 +37,18 @@ html, body {
   margin:10px 50px;
 }
 
-.navbar-link a:hover{
-  color:var(--red);
-}
-
 .navbar-link a{
   text-decoration: none;
   color:white;
 }
 
-.navbar .myBtn:hover{
-  cursor:pointer;
+.navbar-link a:hover{
   color:var(--red);
+}
+
+#navbar-subscribe a:hover{
+  cursor:pointer;
+  color:var(--red); !important
 }
 
 .navbar-link-toggle{
@@ -183,11 +183,21 @@ html, body {
   color:var(--red);
 }
 
-
+.description-six-elements{
+  text-align: center;
+}
 .description-six-elements ul{
   list-style:none;
-  padding-left:24px;
+  padding:0;
   font-size:18px;
+}
+
+.description-ads-track h3{
+  text-align: center;
+}
+
+.description-praxis-track h3{
+  text-align: center;
 }
 
 .description .see-todays a{
@@ -324,6 +334,11 @@ html, body {
   font-size:50px;
 }
 
+.see-recent a:hover{
+  color:var(--red);
+  -webkit-animation:opacitychange 0s infinite;
+}
+
 
 
 .footer{
@@ -356,18 +371,12 @@ html, body {
 }
 
 
-/*SUBSCRIPTION MODAL*/
-.navbar .myBtn:hover{
-  cursor:pointer;
-  color:var(--red);
-}
-
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 150px; /* Location of the box */
+    z-index: 100; /* Sit on top */
+    padding-top: 15vh; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -392,6 +401,9 @@ html, body {
 }
 
 @media only screen and (max-width: 768px) {
+  .modal{
+    padding-top:5vh;
+  }
   .modal-content{
     width:95%;
   }
@@ -457,6 +469,7 @@ html, body {
 
 .subscribe-button:hover{
   background-color: var(--red);
+  cursor: pointer;
 }
 
 
