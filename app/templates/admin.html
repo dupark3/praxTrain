@@ -38,8 +38,22 @@
 
 <a href = "/">Go back to home page</a>
 
+{% if server_status %}
+   Email scheduling server is ON.<br>
+   {% set hours = (sleepfor / 3600)| int%}
+   {% set minutes = ((sleepfor % 3600) / 60) | int %}
+   {% set seconds = (sleepfor % 60) %}
+
+   Next email will be sent in {{hours}}:{{minutes}}:{{seconds}} or less.
+{% else %}
+   <form id="server" action="/startserver" method="POST">
+       <input type="submit" value="Start Server"> 
+   </form>
+{% endif %}
+
+
 <form id="email" action="/manualemail" method="POST">
-    <input type="submit" value="Send Today's Emails"> 
+    <input type="submit" value="Send Today's Emails Manually Instead"> 
 </form>
 
 {% include "subscribemodal.html" %}

@@ -161,7 +161,17 @@ def admin():
         unsubscribe_links = ['http://praxtrain.com/unsubscribe/' + serializer.dumps(row[3]) for row in rows]
         serializer = URLSafeSerializer(admininfo.secret_key, salt=admininfo.confirm_salt)
         confirm_links = ['http://praxtrain.com/confirm/' + serializer.dumps(row[3]) for row in rows]
-        return render_template('admin.html', rows=rows, unsubscribe_links=unsubscribe_links, confirm_links=confirm_links, hour=today.hour, minute=today.minute, second=today.second)
+
+        print('Email scheduling server status is ' + str(dailyemail.serverStatusObj.status))
+        return render_template('admin.html', 
+                                rows=rows, 
+                                unsubscribe_links=unsubscribe_links, 
+                                confirm_links=confirm_links, 
+                                hour=today.hour, 
+                                minute=today.minute, 
+                                second=today.second, 
+                                server_status=dailyemail.serverStatusObj.status, 
+                                sleepfor=dailyemail.serverStatusObj.sleepfor)
     else:
         return render_template('adminlogin.html')
 
@@ -171,7 +181,12 @@ def manualemail():
     return render_template('subscribed.html', msg='Emails sent to subscribers manually.', records=spreadsheet.getSpreadsheet(), 
                                indexToday=spreadsheet.getTodayIndex())
 
-if __name__ == '__main__':
-    threadObj = threading.Thread(target=dailyemail.send_confirmation, args=['dupark3@gmail.com'])
+@app.route('/startserver', methods=['POST'])
+def startserver():
+    threadObj = threading.Thread(target=dailyemail.server)
     threadObj.start()
+    return render_template('subscribed.html', msg='Threaded server started.', records=spreadsheet.getSpreadsheet(), 
+                               indexToday=spreadsheet.getTodayIndex())
+
+if __name__ == '__main__':
     app.run()

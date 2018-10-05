@@ -10,20 +10,31 @@ import spreadsheet, admininfo, generateEmail, itsdangerous
 
 from itsdangerous import URLSafeSerializer
 
+class server_status:
+    status = False
+    sleepfor = 0
+serverStatusObj = server_status()
+
 def sleep_until_eight():
     today = datetime.datetime.now()
     eight = today.replace(hour=20, minute=0, second=0, microsecond=0)
     if today.hour >= 20:
         eight += datetime.timedelta(days=1)
     sleepfor = (eight-today).seconds
-    print('sleeping for ' + str(sleepfor))
-    sleep((eight - today).seconds)
+    while sleepfor > 3600:
+        print('sleeping for 3600 seconds out of ' + str(sleepfor) + ' seconds.')
+        serverStatusObj.sleepfor = sleepfor
+        sleepfor -= 3600
+        sleep(3600)
+    print(str(sleepfor) + ' seconds until sending emails')
+    sleep(sleepfor)
 
-# def server():
-#     while(True):
-#         print('server while loop')
-#         sleep_until_eight()
-#         send_emails()
+def server():
+    serverStatusObj.status = True
+    while(True):
+        print('in while loop of server')
+        sleep_until_eight()
+        send_emails()
 
 def send_emails():
     con = sqlite3.connect('database.db')
@@ -50,7 +61,7 @@ def send_emails():
     smtpserver.login(sender, admininfo.zoho_pw)
 
     serializer = URLSafeSerializer(admininfo.secret_key, salt=admininfo.unsubscribe_salt)
-
+    
     for recipient in recipients:
         msg = MIMEMultipart('alternative')
         msg['Subject'] = "Your Praxis for " + todaysPraxis['day']
