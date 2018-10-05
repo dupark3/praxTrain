@@ -1,0 +1,40 @@
+<!-- contact.html-->
+
+{% extends "base.html" %}
+{% block title %}PraxTrain Contact{% endblock %}
+
+{% block body %}
+<div id="contact">
+  <div class="container">
+    <div class="heading">
+      <h1>Contact PraxTrain</h1>
+    </div>
+    <div class="row fill-container align-items-bottom">
+      <div class="col-3"></div>
+      <div class="col-6">
+      <form id="contact-form" action="/contact" method="POST">
+          First Name:
+          <input type="text" name="firstName" autofocus="autofocus">
+          <br>
+          Last Name:
+          <input type="text" name="lastName">
+          <br>
+          &emsp;&emsp;Email:
+          <input type="text" name="email">
+          <br>
+          Comments: 
+          <input class="comments" type="text" name="comments">
+          <br>
+          <br>
+          <input type="submit" class="subscribe-button" value="Contact PraxTrain"> 
+          <br>&emsp;
+      </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+{% include "subscribemodal.html" %}
+
+{% endblock %}
