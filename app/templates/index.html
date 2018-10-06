@@ -21,8 +21,8 @@
         We desire to live out a theology that works in our world and culture today.  As <b>followers of Jesus</b>, we want our beliefs, our teachings, and our doctrines to be lived out in our day to day lives in <b>tangible and practical ways</b>. </p>
       </div>
 
-      <div class="col-0 col-md-4"></div>
-      <div class="col-12 col-md-4 description-six-elements fade">
+      
+      <div class="col-12 description-six-elements fade">
         <h3>The Six Elements of PraxTrain</h3>
         <ul>
           <li>- Bible Reading</li>
@@ -33,7 +33,7 @@
           <li>- Faith Activation</li>
         </ul>
       </div>
-      <div class="col-0 col-md-4"></div>
+      
 
       <div class="col-12 col-md-6 description-ads-track fade">
         <h3>The ADS Track</h3>
@@ -68,7 +68,7 @@
       <div id="banner-image-container">
         <!--Rotate through 14 pictures-->
         {% set imgFile = 'banner' + (records[indexToday]['post_id'] | int % 14)| string + '.jpg'%}
-        <img src="{{url_for('static', filename=imgFile)}}?v=1.5">
+        <img src="{{url_for('static', filename=imgFile)}}?v=1.6">
         <div class="date">
           {{records[indexToday]['day']+' · '+
           records[indexToday]['date'].replace('/','.') }}
@@ -79,6 +79,13 @@
       <!--ADS COLUMN-->
       <div class = "col-12 col-md-6 challenge-block">
         <h2 class="heading">ADS</h2>
+
+        {% if records[indexToday]['ads_element_explanation'] %}
+        <h4 class="subheading">Element Explanation</h4>
+        <p>
+          {{records[indexToday]['ads_element_explanation']}}<br>
+        </p>
+        {% endif %}
 
         {% if records[indexToday]['ads_bible_reading'] %}
         <h4 class="subheading"> Bible Reading</h4>
@@ -145,6 +152,13 @@
       <!--PRAXIS COLUMN-->
       <div class = "col-12 col-md-6 challenge-block">
         <h2 class="heading">Praxis</h2>
+
+        {% if records[indexToday]['praxis_element_explanation'] %}
+        <h4 class="subheading">Element Explanation</h4>
+        <p>
+          {{records[indexToday]['praxis_element_explanation']}}<br>
+        </p>
+        {% endif %}
 
         {%if records[indexToday]['praxis_bible_reading']%}
         <h4 class="subheading">Bible Reading</h4>

@@ -21,7 +21,7 @@
       <div id="banner-image-container">
         <!--Rotate through 14 pictures-->
         {% set imgFile = 'banner' + (records[i]['post_id'] | int % 14)| string + '.jpg'%}
-        <img src="{{url_for('static', filename=imgFile)}}?v=1.3">
+        <img src="{{url_for('static', filename=imgFile)}}?v=1.6">
         <div class="date">
           {{records[i]['day']+' · '+
           records[i]['date'].replace('/','.') }}
@@ -32,6 +32,13 @@
       <!--ADS COLUMN-->
       <div class = "col-12 col-md-6 challenge-block">
         <h1 class="heading">ADS</h1>
+
+        {% if records[indexToday]['ads_element_explanation'] %}
+        <h4 class="subheading">Element Explanation</h4>
+        <p>
+          {{records[indexToday]['ads_element_explanation']}}<br>
+        </p>
+        {% endif %}
 
         {% if records[i]['ads_bible_reading'] %}
         <h4 class="subheading"> Bible Reading</h4>
@@ -98,6 +105,13 @@
       <!--PRAXIS COLUMN-->
       <div class = "col-12 col-md-6 challenge-block">
         <h1 class="heading">Praxis</h1>
+
+        {% if records[indexToday]['praxis_element_explanation'] %}
+        <h4 class="subheading">Element Explanation</h4>
+        <p>
+          {{records[indexToday]['praxis_element_explanation']}}<br>
+        </p>
+        {% endif %}
 
         {%if records[i]['praxis_bible_reading']%}
         <h4 class="subheading">Bible Reading</h4>

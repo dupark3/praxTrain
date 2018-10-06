@@ -79,6 +79,13 @@
       <div class = "col-12 col-md-6 challenge-block">
         <h1 class="heading">ADS</h1>
 
+        {% if records[indexToday]['ads_element_explanation'] %}
+        <h4 class="subheading">Element Explanation</h4>
+        <p>
+          {{records[indexToday]['ads_element_explanation']}}<br>
+        </p>
+        {% endif %}
+
         {% if records[indexToday]['ads_bible_reading'] %}
         <h4 class="subheading"> Bible Reading</h4>
         <p> 
@@ -144,6 +151,13 @@
       <!--PRAXIS COLUMN-->
       <div class = "col-12 col-md-6 challenge-block">
         <h1 class="heading">Praxis</h1>
+
+        {% if records[indexToday]['ads_element_explanation'] %}
+        <h4 class="subheading">Element Explanation</h4>
+        <p>
+          {{records[indexToday]['ads_element_explanation']}}<br>
+        </p>
+        {% endif %}
 
         {%if records[indexToday]['praxis_bible_reading']%}
         <h4 class="subheading">Bible Reading</h4>
