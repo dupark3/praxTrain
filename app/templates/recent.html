@@ -21,7 +21,7 @@
       <div id="banner-image-container">
         <!--Rotate through 14 pictures-->
         {% set imgFile = 'banner' + (records[i]['post_id'] | int % 14)| string + '.jpg'%}
-        <img src="{{url_for('static', filename=imgFile)}}?v=1.6">
+        <img src="{{url_for('static', filename=imgFile)}}?v=1.7">
         <div class="date">
           {{records[i]['day']+' · '+
           records[i]['date'].replace('/','.') }}
@@ -66,10 +66,10 @@
         </p>
         {% endif %}
 
-        {% if records[i]['ads_verse_meditation'] %}
-        <h4 class="subheading">Verse Meditation</h4>
+        {% if records[i]['ads_contemplation'] %}
+        <h4 class="subheading">Contemplation</h4>
         <p>
-          {% for verse in records[i]['ads_verse_meditation'].split(',') %}
+          {% for verse in records[i]['ads_contemplation'].split(',') %}
             {% if verse[0] == "*" %}
               <p>{{verse[1:]}}</p>
             {% else %}
@@ -139,10 +139,10 @@
         </p>
         {% endif %}
 
-        {% if records[i]['praxis_verse_meditation'] %}
-        <h4 class="subheading">Verse Meditation</h4>
+        {% if records[i]['praxis_contemplation'] %}
+        <h4 class="subheading">Contemplation</h4>
         <p>
-          {% for verse in records[i]['praxis_verse_meditation'].split(',') %}
+          {% for verse in records[i]['praxis_contemplation'].split(',') %}
             {% if verse[0] == "*" %}
               <p>{{verse[1:]}}</p>
             {% else %}
