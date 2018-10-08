@@ -21,7 +21,7 @@
       <div id="banner-image-container">
         <!--Rotate through 14 pictures-->
         {% set imgFile = 'banner' + (records[i]['post_id'] | int % 14)| string + '.jpg'%}
-        <img src="{{url_for('static', filename=imgFile)}}?v=1.7">
+        <img src="{{url_for('static', filename=imgFile)}}?v=1.8">
         <div class="date">
           {{records[i]['day']+' · '+
           records[i]['date'].replace('/','.') }}

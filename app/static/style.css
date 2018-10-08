@@ -8,11 +8,12 @@
 };
 
 html, body {
+  font-family: 'Open Sans', sans-serif;
   margin: 0px;
   padding: 0px;
   border: 0px;
-  font-family: 'Open Sans', sans-serif;
 }
+
 
 .navbar{
   background-color: transparent;
@@ -103,6 +104,7 @@ html, body {
 .hero-logo img{
   width:550px;
 }
+
 @media only screen and (max-width: 768px) {
   .hero-logo img{
     width:70vw;
@@ -308,6 +310,8 @@ html, body {
   color:var(--red);
   text-decoration: underline;
 }
+
+
 
 .challenge-block .subheading{
   color:var(--grey);
@@ -541,4 +545,11 @@ html, body {
 
 .comments{
   width:100%;
+}
+
+
+
+/*ADMIN*/
+#manualemail{
+  margin-top:100px;
 }
