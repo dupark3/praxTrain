@@ -29,9 +29,7 @@ def generateHTML(todaysPraxis, adsPraxis, praxisPraxis, unsubURL):
           td.full-width-mobile { width: auto !important; }
         }</style></head><body><div><!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" ><tr><td style="line-height:18px;font-size:0px;mso-line-height-rule:exactly;"><v:rect style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"><v:fill origin="0.5, 0" position="0.5, 0" src='''
     
-    imgURLs = ['https://i.imgur.com/GIU7FAm.jpg','https://i.imgur.com/Zn986ND.jpg', 'https://i.imgur.com/6xme44J.jpg', 'https://i.imgur.com/SnZBwkE.jpg', 'https://i.imgur.com/oE6oEuh.jpg', 'https://i.imgur.com/gGt7LlJ.jpg', 'https://i.imgur.com/wLEP62w.jpg', 'https://i.imgur.com/OXI5dji.jpg', 'https://i.imgur.com/q2ULG4r.jpg', 'https://i.imgur.com/A3FB21q.jpg', 'https://i.imgur.com/em3cYv7.jpg', 'https://i.imgur.com/SjE20kj.jpg', 'https://i.imgur.com/JPc8O88.jpg', 'https://i.imgur.com/R23gZlP']
-    imgSrc = imgURLs[int(todaysPraxis['post_id']) % 14]
-    print(imgSrc)
+    imgSrc = 'https://i.imgur.com/MzMwMAJ.jpg'
     
     html += imgSrc
     html += '''type="tile" /><v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0"><![endif]--><div style="background:url('''

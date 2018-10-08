@@ -164,7 +164,7 @@ def admin():
         serializer = URLSafeSerializer(admininfo.secret_key, salt=admininfo.confirm_salt)
         confirm_links = ['http://praxtrain.com/confirm/' + serializer.dumps(row[3]) for row in rows]
         serializer = URLSafeSerializer(admininfo.secret_key, salt=admininfo.individual_email_salt)
-        individual_email_links = ['http://praxtrain.com/confirm/' + serializer.dumps(row[3]) for row in rows]
+        individual_email_links = ['http://praxtrain.com/individualemail/' + serializer.dumps(row[3]) for row in rows]
 
         print('Email scheduling server status is ' + str(dailyemail.serverStatusObj.status))
         return render_template('admin.html', 
@@ -193,8 +193,8 @@ def manualemail():
                             records=spreadsheet.getSpreadsheet(), 
                             indexToday=spreadsheet.getTodayIndex())
 
-@app.route('/individualemail/<token>', methods=['POST'])
-def individualemail():
+@app.route('/individualemail/<token>', methods=['GET'])
+def individualemail(token):
     serializer = URLSafeSerializer(admininfo.secret_key, salt=admininfo.individual_email_salt)
     email = serializer.loads(token)
     dailyemail.send_emails([email])
