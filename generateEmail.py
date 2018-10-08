@@ -48,7 +48,7 @@ def generateHTML(todaysPraxis, adsPraxis, praxisPraxis, unsubURL):
     html += '''</div></td></tr></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody></table></div></div><!--[if mso | IE]></v:textbox></v:rect></td></tr></table><table align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600" ><tr><td style="line-height:18px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div style="background:#f0f0f0;background-color:#f0f0f0;Margin:0px auto;max-width:600px;"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#f0f0f0;background-color:#f0f0f0;width:100%;"><tbody><tr><td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;"><!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><td class="" style="vertical-align:top;width:300px;" ><![endif]--><div class="mj-column-per-50 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"><table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"><tr><td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"><div style="font-family:helvetica;font-size:20px;font-weight:bold;line-height:1;text-align:center;color:#AD343E;">ADS</div></td></tr>'''
     for k,v in adsPraxis.items():
         html += '''<tr><td align="Center" style="font-size:0px;padding:10px 25px;word-break:break-word;"><div style="font-family:helvetica;font-size:13px;font-weight:bold;line-height:18px;text-align:Center;color:#000;">'''
-        html += k.replace('_', ' ').strip('ads ').title()
+        html += k.replace('_', ' ')[4:].title()
         html += '''</div></td></tr><tr><td align="Center" style="font-size:0px;padding:10px 25px;word-break:break-word;"><div style="font-family:helvetica;font-size:13px;line-height:18px;text-align:Center;color:#000;">'''
         html += '<br>'.join(v.split(', ')).replace('*', '')
         html += '''</div></td></tr>'''
@@ -58,7 +58,7 @@ def generateHTML(todaysPraxis, adsPraxis, praxisPraxis, unsubURL):
 
     for k, v in praxisPraxis.items():
         html +='''<tr><td align="Center" style="font-size:0px;padding:10px 25px;word-break:break-word;"><div style="font-family:helvetica;font-size:13px;font-weight:bold;line-height:18px;text-align:Center;color:#000;">'''
-        html += k.replace('_', ' ').strip('praxis ').title()
+        html += k.replace('_', ' ')[7:].title()
         html +='''</div></td></tr><tr><td align="Center" style="font-size:0px;padding:10px 25px;word-break:break-word;"><div style="font-family:helvetica;font-size:13px;line-height:18px;text-align:Center;color:#000;">'''
         html += '<br>'.join(v.split(', ')).replace('*', '')
         html +='''</div></td></tr>'''
