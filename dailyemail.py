@@ -23,8 +23,8 @@ def sleep_until_eight():
     sleepfor = (eight-today).seconds
     while sleepfor > 3600:
         print('sleeping for 3600 seconds out of ' + str(sleepfor) + ' seconds.')
-        serverStatusObj.sleepfor = sleepfor
         sleepfor -= 3600
+        serverStatusObj.sleepfor = sleepfor
         sleep(3600)
     print(str(sleepfor) + ' seconds until sending emails')
     sleep(sleepfor)
@@ -34,15 +34,14 @@ def server():
     while(True):
         print('in while loop of server')
         sleep_until_eight()
-        send_emails()
+        con = sqlite3.connect('database.db')
+        cur = con.cursor()
+        cur.execute('SELECT email FROM subscribers WHERE confirmed = 1')
+        recipients = [email[0] for email in cur.fetchall()] # convert list of tuples to lists
+        con.close()
+        send_emails(recipients)
 
-def send_emails():
-    con = sqlite3.connect('database.db')
-    cur = con.cursor()
-    cur.execute('SELECT email FROM subscribers WHERE confirmed = 1')
-    recipients = [email[0] for email in cur.fetchall()] # convert list of tuples to lists
-    con.close()
-
+def send_emails(recipients):
     todayIndex = spreadsheet.getTodayIndex()
     todaysPraxis = spreadsheet.getSpreadsheet()[todayIndex]
 

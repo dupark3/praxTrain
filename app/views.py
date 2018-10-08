@@ -3,15 +3,16 @@
 # $ export FLASK_ENV=development        code changes refreshed
 
 from flask import Flask, redirect, url_for, request, render_template
-
-from app import app # app.py
-import spreadsheet # spreadsheet.py
-import admininfo # admininfo.py
-import dailyemail
+from app import app 
 
 import datetime, sqlite3, threading, re
-from werkzeug.security import check_password_hash
-from itsdangerous import URLSafeSerializer
+from werkzeug.security import check_password_hash # for admin password
+from itsdangerous import URLSafeSerializer # for confirm and unsubscribe
+
+import spreadsheet # spreadsheet.py
+import admininfo # admininfo.py
+import dailyemail # dailyemail.py
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -157,16 +158,20 @@ def admin():
         con.close()
         today = datetime.datetime.now()
         
+        # Create tokens for every subscriber to manually confirm/unsubscribe
         serializer = URLSafeSerializer(admininfo.secret_key, salt=admininfo.unsubscribe_salt)
         unsubscribe_links = ['http://praxtrain.com/unsubscribe/' + serializer.dumps(row[3]) for row in rows]
         serializer = URLSafeSerializer(admininfo.secret_key, salt=admininfo.confirm_salt)
         confirm_links = ['http://praxtrain.com/confirm/' + serializer.dumps(row[3]) for row in rows]
+        serializer = URLSafeSerializer(admininfo.secret_key, salt=admininfo.individual_email_salt)
+        individual_email_links = ['http://praxtrain.com/confirm/' + serializer.dumps(row[3]) for row in rows]
 
         print('Email scheduling server status is ' + str(dailyemail.serverStatusObj.status))
         return render_template('admin.html', 
                                 rows=rows, 
                                 unsubscribe_links=unsubscribe_links, 
                                 confirm_links=confirm_links, 
+                                individual_email_links=individual_email_links,
                                 hour=today.hour, 
                                 minute=today.minute, 
                                 second=today.second, 
@@ -177,9 +182,27 @@ def admin():
 
 @app.route('/manualemail', methods=['POST'])
 def manualemail():
-    dailyemail.send_emails()
-    return render_template('subscribed.html', msg='Emails sent to subscribers manually.', records=spreadsheet.getSpreadsheet(), 
-                               indexToday=spreadsheet.getTodayIndex())
+    con = sqlite3.connect('database.db')
+    cur = con.cursor()
+    cur.execute('SELECT email FROM subscribers WHERE confirmed = 1')
+    recipients = [email[0] for email in cur.fetchall()] # convert list of tuples to lists
+    con.close()
+    dailyemail.send_emails(recipients)
+    return render_template('subscribed.html', 
+                            msg='Emails sent to subscribers manually.', 
+                            records=spreadsheet.getSpreadsheet(), 
+                            indexToday=spreadsheet.getTodayIndex())
+
+@app.route('/individualemail/<token>', methods=['POST'])
+def individualemail():
+    serializer = URLSafeSerializer(admininfo.secret_key, salt=admininfo.individual_email_salt)
+    email = serializer.loads(token)
+    dailyemail.send_emails([email])
+    return render_template('subscribed.html', 
+                            msg='Email sent to ' + email + ' manually.',
+                            records=spreadsheet.getSpreadsheet(), 
+                            indexToday=spreadsheet.getTodayIndex())
+
 
 @app.route('/startserver', methods=['POST'])
 def startserver():

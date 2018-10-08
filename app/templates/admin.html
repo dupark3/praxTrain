@@ -13,6 +13,7 @@
       <td>Confirmed</td>
       <td>CONFIRM This Email Manually</td>
       <td>UNSUBSCRIBE This Email Manually</td>
+      <td>SEND EMAIL To This Individual Manually</td>
    </thead>
    
    {% for i in range(rows|length) %}
@@ -28,6 +29,9 @@
          <td><a href={{unsubscribe_links[i]}}>
             <i class="fas fa-times-circle"></i>
          </td>
+         <td><a href={{individual_email_links[i]}}>
+            <i class="far fa-envelope"></i>
+         </td>
       </tr>
    {% endfor %}
 </table>
@@ -36,7 +40,7 @@
 <b>AWS SERVER TIME:</b><br>
 {{hour}}:{{minute}}:{{second}}<br><br>
 
-<a href = "/">Go back to home page</a>
+<a href = "/">Go back to home page</a><br>
 
 {% if server_status %}
    Email scheduling server is ON.<br>
@@ -52,8 +56,8 @@
 {% endif %}
 
 
-<form id="email" action="/manualemail" method="POST">
-    <input type="submit" value="Send Today's Emails Manually Instead"> 
+<form id="manualemail" action="/manualemail" method="POST">
+    <input style="opacity:0.3;" type="submit" value="Send Today's Emails Manually Instead"> 
 </form>
 
 {% include "subscribemodal.html" %}
