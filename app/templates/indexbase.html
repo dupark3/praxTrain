@@ -12,13 +12,13 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
   <!-- Custom styles for this template -->
-  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}?v=1.8">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}?v=1.9">
 
   <!-- Google search verification -->
   <meta name="google-site-verification" content="ACz1lCWuBnb9e4pmT5elDKr5A2xds0W78wMQNNeKEMA" />
 
   <!--favicon-->
-  <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='favicon.png')}}?v=1.8"/>
+  <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename='favicon.png')}}?v=1.9"/>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -40,7 +40,7 @@
         <a href="/about">About</a>
       </div>
       <div class="navbar-link navbar-item">
-        <a href="/#today-header">Today</a>
+        <a class="smooth-scroll" href="/#today-header">Today</a>
       </div>
       <div class="navbar-link navbar-item">
         <a href="/recent">Recent</a>
@@ -55,7 +55,7 @@
   <div class="hero">
     <div class="hero-logo fade">
       <a href="/" id="logo">
-        <img id="logo-image" src="{{url_for('static', filename='praxlogo.png')}}?v=1.8"/>
+        <img id="logo-image" src="{{url_for('static', filename='praxlogo.png')}}?v=1.9"/>
       </a>
     </div>
     
@@ -64,7 +64,7 @@
     </div>
     
     <div class ="hero-today">
-        <a href="#today-header">
+        <a class="smooth-scroll" href="#today-header">
           <i class="fas fa-angle-double-down down-arrow"></i>
           <br>See Today's Praxis Now
         </a>
@@ -87,6 +87,6 @@
     </div>
   </div>
 
-  <script src="{{url_for('static', filename='scripts.js')}}?v=1.8"></script>
+  <script src="{{url_for('static', filename='scripts.js')}}?v=1.9"></script>
 </body>
 </html>

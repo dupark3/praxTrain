@@ -43,7 +43,7 @@
         <p>The Praxis track is for those with busier schedules but desire the daily prompts to be in the word and be living out their faith (15-30 min).  You can jump into either track, it's up to you!</p>
       </div>
       <div class="col-12 see-todays">
-        <a href="#today-header">
+        <a class="smooth-scroll" href="#today-header">
           <i class="fas fa-angle-down down-arrow"></i>
           <br>See Today's Praxis Now
         </a>
@@ -67,7 +67,7 @@
       <div id="banner-image-container">
         <!--Rotate through 14 pictures-->
         {% set imgFile = 'banner' + (records[indexToday]['post_id'] | int % 14)| string + '.jpg'%}
-        <img src="{{url_for('static', filename=imgFile)}}?v=1.8">
+        <img src="{{url_for('static', filename=imgFile)}}?v=1.9">
         <div class="date">
           {{records[indexToday]['day']+' · '+
           records[indexToday]['date'].replace('/','.') }}
