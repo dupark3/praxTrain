@@ -17,7 +17,7 @@ serverStatusObj = server_status()
 
 def sleep_until_eight():
     today = datetime.datetime.now()
-    eight = today.replace(hour=20, minute=0, second=0, microsecond=0)
+    eight = today.replace(hour=20, minute=2, second=0, microsecond=0)
     if today.hour >= 20:
         eight += datetime.timedelta(days=1)
     sleepfor = (eight-today).seconds
