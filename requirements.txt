@@ -31,7 +31,7 @@ pyasn1-modules==0.2.2
 python-dateutil==2.7.3
 PyYAML==3.13
 requests==2.18.4
-rsa==4.0
+rsa==4.7
 semantic-version==2.5.0
 six==1.11.0
 SQLAlchemy==1.2.12
